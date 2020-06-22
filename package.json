@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/andrewiggins/brotli-size-cli#readme",
   "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
+    "**/*.{js,jsx,ts,tsx,yml}": [
       "prettier --write"
     ]
   },
