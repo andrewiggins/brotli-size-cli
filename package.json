@@ -1,0 +1,56 @@
+{
+  "name": "brotli-size-cli",
+  "version": "0.0.0",
+  "description": "Get the brotli size of a file or stdin",
+  "type": "module",
+  "bin": {
+    "brotli-size": "index.js"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewiggins/brotli-size-cli.git"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "cli",
+    "zlib",
+    "brotli",
+    "compressed",
+    "size",
+    "tool"
+  ],
+  "engines": {
+    "node": ">=13"
+  },
+  "author": "Andre Wiggins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrewiggins/brotli-size-cli/issues"
+  },
+  "homepage": "https://github.com/andrewiggins/brotli-size-cli#readme",
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "brotli-size": "^4.0.0"
+  },
+  "devDependencies": {
+    "changesets-cli": "0.0.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "prettier": "^2.0.5",
+    "tape": "^5.0.1"
+  }
+}
