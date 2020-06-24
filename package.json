@@ -1,6 +1,6 @@
 {
   "name": "brotli-size-cli",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Get the brotli size of a file or stdin",
   "type": "module",
   "bin": {

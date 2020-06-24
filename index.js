@@ -7,7 +7,7 @@ import prettyBytes from "pretty-bytes";
 import brotliModule from "brotli-size";
 
 sade("brotli-size [file]", true)
-	.version("0.0.0")
+	.version("1.0.0")
 	.describe("Get the brotli size of a file or stdin")
 	.example("unicorn.png")
 	.example("unicorn.png --raw")
