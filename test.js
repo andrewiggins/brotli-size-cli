@@ -2,7 +2,8 @@ import * as fs from "fs";
 import { spawnSync } from "child_process";
 import path from "path";
 import { fileURLToPath } from "url";
-import test from "tape";
+import { test } from "uvu";
+import * as assert from "uvu/assert";
 import brotliModule from "brotli-size";
 
 // @ts-ignore
@@ -39,28 +40,38 @@ function runCli(args, stdin) {
 	return result.stdout;
 }
 
-test("file", async (t) => {
+test("file", async () => {
 	const stdout = runCli(["test.js"]);
-	t.match(stdout.trim(), /^\d+ B$/, "Outputs formatted byte count");
+	assert.match(stdout.trim(), /^\d+ B$/, "Outputs formatted byte count");
 });
 
-test("file raw", async (t) => {
+test("file raw", async () => {
 	const stdout = runCli(["test.js", "--raw"]);
-	t.equal(parseInt(stdout, 10), fileSync(testPath), "Outputs raw byte count");
+	assert.equal(
+		parseInt(stdout, 10),
+		fileSync(testPath),
+		"Outputs raw byte count"
+	);
 });
 
-test("stdin raw", async (t) => {
+test("stdin raw", async () => {
 	const stdin = fs.readFileSync(testPath, "utf-8");
 	const stdout = runCli(["--raw"], stdin);
-	t.equal(parseInt(stdout, 10), fileSync(testPath), "Accepts stdin stream");
+	assert.equal(
+		parseInt(stdout, 10),
+		fileSync(testPath),
+		"Accepts stdin stream"
+	);
 });
 
-test("version", async (t) => {
+test("version", async () => {
 	const pkg = JSON.parse(fs.readFileSync(repoRoot("package.json"), "utf-8"));
 	const stdout = runCli(["--version"]);
-	t.equal(
+	assert.equal(
 		stdout.trim(),
 		`brotli-size, ${pkg.version}`,
 		"Version matches string in package.json"
 	);
 });
+
+test.run();
